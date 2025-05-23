@@ -1,0 +1,1732 @@
+/* Main App Styles */
+:root {
+  --color-1: #43416A; /* Winter - Mavi */
+  --color-2: #984063; /* Spring - Sarı */
+  --color-3: #43416A; /* Summer - Turuncu */
+  --color-4: #984063; /* Autumn - Mor */
+  --color-5: #43416A; /* Mor Tonu */
+  --gradient-1-2: linear-gradient(to bottom, var(--color-1), var(--color-2));
+  --gradient-2-3: linear-gradient(to bottom, var(--color-2), var(--color-3));
+  --gradient-3-4: linear-gradient(to bottom, var(--color-3), var(--color-4));
+  --gradient-4-5: linear-gradient(to bottom, var(--color-4), var(--color-5));
+  --gradient-5-1: linear-gradient(to bottom, var(--color-5), var(--color-1));
+  --gradient: linear-gradient(135deg, var(--color-1), var(--color-4));
+  --sidebar-bg: #212529;
+  --text-light: #fff;
+  --text-muted: #6c757d;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #1A1A1A;  /* Koyu arka plan */
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 270px;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease-in-out, opacity 0.3s ease;
+}
+
+.content-container {
+  margin-left: 270px;
+  width: calc(100% - 270px);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Fullpage.js styling */
+.fullpage-wrapper {
+  margin-left: 270px;
+  width: calc(100% - 270px);
+}
+
+/* Section styling - ensuring perfect fit */
+.section {
+  overflow: hidden !important;
+  box-sizing: border-box;
+  padding: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh !important;
+}
+
+.fp-overflow {
+  overflow-y: auto !important;
+  height: auto !important;
+}
+
+/* Section background gradients - Four Seasons theme with transitions */
+.section:nth-child(1), .home-section {
+  background: var(--gradient-1-2);
+  position: relative;
+  z-index: 0;
+}
+
+.section:nth-child(2), .about-section {
+  background: var(--gradient-2-3);
+  position: relative;
+  z-index: 0;
+}
+
+.section:nth-child(3), .services-section {
+  background: var(--gradient-3-4);
+  position: relative;
+  z-index: 0;
+}
+
+.section:nth-child(4), .portfolio-section {
+  background: var(--gradient-4-5);
+  position: relative;
+  z-index: 0;
+}
+
+.section:nth-child(5), .certificates-section {
+  background: var(--gradient-5-1);
+  position: relative;
+  z-index: 0;
+}
+
+.section:nth-child(6), .contact-section {
+  background: var(--gradient-1-2);
+  position: relative;
+  z-index: 0;
+}
+
+/* Overlay for section backgrounds */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15); /* Subtle dark overlay */
+  z-index: 0;
+}
+
+.fp-section.fp-table, .fp-slide.fp-table {
+  display: table;
+  width: 100%;
+}
+
+.fp-tableCell {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Page content */
+.page-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  /* Prevent any internal scrolling */
+  overflow: hidden !important;
+}
+
+/* Navigation bullets styling */
+#fp-nav ul li a span, 
+.fp-slidesNav ul li a span {
+  background: var(--gradient) !important;
+}
+
+#fp-nav ul li .fp-tooltip {
+  color: var(--text-light) !important;
+}
+
+/* Make section title more compact and BOLD */
+.section-title {
+  position: relative;
+  margin-bottom: 30px;
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-title h2 {
+  font-size: 110px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.15);
+  text-transform: uppercase;
+  margin: 0 auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 4px;
+  z-index: 1;
+  padding: 0;
+}
+
+.section-title h3 {
+  position: relative;
+  font-size: 32px;
+  margin-bottom: 0;
+  margin-top: 45px;
+  color: var(--text-light);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.section-title h3::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--gradient);
+  margin: 15px auto 0;
+}
+
+.btn-primary {
+  background: var(--gradient);
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-5), var(--color-1));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outline-primary {
+  color: var(--color-2);
+  background: transparent;
+  border: 1px solid var(--color-2);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  border-color: transparent;
+}
+
+.btn-outline-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--gradient);
+  z-index: -1;
+  transition: width 0.3s ease;
+}
+
+.btn-outline-primary:hover::before {
+  width: 100%;
+}
+
+/* Profile */
+.profile-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  image-rendering: -webkit-optimize-contrast; /* Improves image clarity in Webkit browsers */
+  image-rendering: crisp-edges; /* Modern browsers */
+  transform: translateZ(0); /* Force GPU acceleration */
+  backface-visibility: hidden; /* Reduce blurriness */
+}
+
+.profile-name {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Nav Menu */
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0;
+  width: 100%;
+}
+
+.nav-menu li {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.menu-icon {
+  margin-right: 10px;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.nav-menu li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+/* Gradient text for nav menu items */
+.nav-menu li:nth-child(1) a {
+  background: var(--gradient-1-2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s;
+}
+
+.nav-menu li:nth-child(1) a:hover,
+.nav-menu li:nth-child(1).active a {
+  transform: translateX(5px);
+  filter: brightness(120%);
+}
+
+.nav-menu li:nth-child(2) a {
+  background: var(--gradient-2-3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s;
+}
+
+.nav-menu li:nth-child(2) a:hover,
+.nav-menu li:nth-child(2).active a {
+  transform: translateX(5px);
+  filter: brightness(120%);
+}
+
+.nav-menu li:nth-child(3) a {
+  background: var(--gradient-3-4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s;
+}
+
+.nav-menu li:nth-child(3) a:hover,
+.nav-menu li:nth-child(3).active a {
+  transform: translateX(5px);
+  filter: brightness(120%);
+}
+
+.nav-menu li:nth-child(4) a {
+  background: var(--gradient-4-5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s;
+}
+
+.nav-menu li:nth-child(4) a:hover,
+.nav-menu li:nth-child(4).active a {
+  transform: translateX(5px);
+  filter: brightness(120%);
+}
+
+.nav-menu li:nth-child(5) a {
+  background: var(--gradient-5-1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s;
+}
+
+.nav-menu li:nth-child(5) a:hover,
+.nav-menu li:nth-child(5).active a {
+  transform: translateX(5px);
+  filter: brightness(120%);
+}
+
+.nav-menu li:nth-child(6) a {
+  background: var(--gradient-1-2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s;
+}
+
+.nav-menu li:nth-child(6) a:hover,
+.nav-menu li:nth-child(6).active a {
+  transform: translateX(5px);
+  filter: brightness(120%);
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  padding-bottom: 20px;
+}
+
+.social-icons a {
+  color: var(--text-light);
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.social-icons a:hover {
+  background: var(--gradient);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Progress Bars */
+.progress {
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: var(--gradient);
+  animation: progress-animation 1.5s ease;
+  height: 100%;
+}
+
+@keyframes progress-animation {
+  from { width: 0%; }
+}
+
+/* Text highlight color */
+.text-info {
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Homepage text visibility enhancement */
+.home-section .text-white {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+}
+
+.home-section .display-4 {
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.home-section .text-white-50 {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Card hover effects */
+.card {
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Portfolio item overlay */
+.portfolio-item .portfolio-overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .sidebar {
+    transform: translateX(-100%);
+    opacity: 0;
+    width: 250px;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  .content-container, .fullpage-wrapper {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .mobile-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+    background-color: var(--sidebar-bg);
+    color: var(--text-light);
+    border: none;
+    border-radius: 5px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-toggle:hover {
+    background-color: var(--color-2);
+    transform: scale(1.05);
+  }
+  
+  .mobile-toggle:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  background: var(--gradient);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  z-index: 999;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Service and Portfolio Card Hover Effects */
+.service-card:hover, .portfolio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.service-card .icon-wrapper, .portfolio-card .icon-wrapper {
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .icon-wrapper {
+  background: rgba(248, 150, 30, 0.25) !important;
+  transform: scale(1.05);
+}
+
+.portfolio-card:hover .icon-wrapper {
+  background: rgba(157, 50, 168, 0.25) !important;
+  transform: scale(1.05);
+}
+
+/* Improved vertical centering for section containers */
+.section .page-container.d-flex.flex-column.justify-content-center {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+/* Portfolio and Services Page specific styling */
+.portfolio-card, .service-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-card .card-body, .service-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-card .card-text, .service-card .card-text {
+  flex-grow: 1;
+}
+
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.portfolio-filters .btn {
+  margin: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Improved card styling for no-scroll sections */
+.service-card, .portfolio-card {
+  margin-bottom: 10px;
+}
+
+.service-card .card-body, .portfolio-card .card-body {
+  padding: 1rem;
+}
+
+.service-card .card-title, .portfolio-card .card-title {
+  font-size: 1.1rem;
+}
+
+.service-card .card-text, .portfolio-card .card-text {
+  font-size: 0.85rem;
+}
+
+/* Arka plandaki büyük başlıklar için özel stil */
+.big-background-text {
+  font-size: 100px !important;
+  font-weight: 700 !important;
+  color: rgba(255, 255, 255, 0.08) !important;
+  letter-spacing: 4px !important;
+  text-transform: uppercase;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15) !important;
+  z-index: 0;
+  line-height: 1;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+/* Mobil cihazlar için responsive düzenlemeler */
+@media (max-width: 767px) {
+  /* Mobilde arka plan yazılarının boyutunu küçült */
+  .big-background-text {
+    font-size: 25px !important;
+    word-break: break-word;
+    white-space: nowrap;
+    height: auto;
+    width: 100%;
+  }
+  
+  /* Tüm sayfaları mobilde aynı hizada ve ortada konumlandırma */
+  .section .page-container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 10px !important;
+    padding-top: 60px !important; 
+    padding-bottom: 60px !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow-y: auto !important;
+    position: relative !important;
+  }
+  
+  /* FP ayarlamaları tüm sayfalar için */
+  .fp-section {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important; /* Seksiyon arası boşlukları kaldır */
+  }
+  
+  .fp-tableCell {
+    height: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important; /* Hücre boşluğunu kaldır */
+  }
+  
+  /* Section içeriklerini ortalama */
+  .section {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100vh !important;
+    height: auto !important;
+  }
+  
+  /* Scroll sorununu çözme */
+  .fp-overflow {
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+  
+  /* Ben Kimim sayfası için yazı fontlarını büyült ve kartlar arası mesafeyi ayarla */
+  .about-section {
+    margin-bottom: 20px !important;
+  }
+  
+  /* Kartlar arası mesafeyi ayarla */
+  .about-section .row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    margin-top: 10px !important;
+  }
+  
+  /* Yeteneklerim kartını düzenle */
+  .about-section .col-lg-5 {
+    width: 90% !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Kişisel Bilgiler kartını düzgünce yerleştir */
+  .about-section .col-lg-6 {
+    width: 90% !important;
+    margin-top: 0 !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+  
+  /* Kart stillerini düzenle */
+  .about-section .card {
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    margin: 0 auto !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Sayfaya fazladan boşluk ekle */
+  .about-section .page-container {
+    padding-bottom: 250px !important;
+  }
+  
+  /* Ana sayfa için yazı boyutları */
+  .home-section .display-4 {
+    font-size: 2rem !important;
+  }
+  
+  .home-section .lead {
+    font-size: 1rem !important;
+  }
+  
+  .home-section .h4 {
+    font-size: 1.2rem !important;
+  }
+  
+  /* Mobilde ana sayfayı koruyalım */
+  .home-section .page-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100vh !important;
+    height: 100vh !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    position: relative !important;
+  }
+  
+  /* Ana sayfa içeriği */
+  .home-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .home-section .display-4 {
+    font-size: 2rem !important;
+  }
+  
+  .home-section .lead {
+    font-size: 1rem !important;
+  }
+  
+  .home-section .h4 {
+    font-size: 1.2rem !important;
+  }
+  
+  /* Scroll down butonu mobilde gizle */
+  .scroll-down-btn {
+    display: none !important;
+  }
+  
+  /* Font boyutlarını küçültelim */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.3 !important;
+  }
+  
+  .card-title {
+    font-size: 0.95rem !important;
+  }
+  
+  .card-text {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0;
+  }
+  
+  /* Ben Kimim sayfası için düzenlemeler */
+  .about-section .card {
+    max-height: none !important;
+    overflow: visible !important;
+    margin-bottom: 15px !important;
+    padding: 10px !important;
+  }
+  
+  .about-section .progress {
+    height: 6px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  /* Neler yapabilirim sayfası için düzenlemeler - içerik sığdırma */
+  .services-section .card {
+    padding: 10px !important;
+  }
+  
+  .services-section .card-text {
+    max-height: none !important;
+    overflow: visible !important;
+    font-size: 0.75rem !important;
+  }
+  
+  .services-section .card-body {
+    padding: 0.5rem !important;
+  }
+  
+  .services-section .icon-wrapper {
+    width: 50px !important;
+    height: 50px !important;
+    margin-bottom: 5px !important;
+  }
+  
+  /* Portfolyo sayfası için düzenlemeler */
+  .portfolio-section .card {
+    margin-bottom: 15px !important;
+    padding: 10px !important;
+  }
+  
+  .portfolio-section .card-body {
+    padding: 0.5rem !important;
+  }
+  
+  .portfolio-section .icon-wrapper {
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 10px !important;
+  }
+  
+  /* Sertifikalar sayfası düzenlemesi */
+  .certificates-section .page-container {
+    padding-top: 60px !important;
+    padding-bottom: 100px !important;
+  }
+  
+  .certificates-section .card {
+    margin-bottom: 15px !important;
+    padding: 8px !important;
+  }
+  
+  .certificates-section .card-body {
+    padding: 0.4rem !important;
+  }
+  
+  .certificates-section img {
+    max-height: 80px !important;
+  }
+  
+  .certificates-section .card-title {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .certificates-section .badge {
+    font-size: 0.7rem !important;
+    padding: 0.35em 0.65em !important;
+  }
+  
+  .certificates-section .card-text {
+    font-size: 0.7rem !important;
+  }
+  
+  /* İletişim sayfası düzenlemesi */
+  .contact-section .page-container {
+    padding-top: 60px !important;
+    padding-bottom: 80px !important;
+  }
+  
+  .contact-section .card {
+    padding: 10px !important;
+  }
+  
+  .contact-section .card-body {
+    padding: 0.75rem !important;
+  }
+  
+  .contact-section h3 {
+    font-size: 1.25rem !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .contact-section .form-label {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .contact-section .form-control {
+    font-size: 0.8rem !important;
+    padding: 0.375rem 0.5rem !important;
+  }
+  
+  .contact-section textarea {
+    min-height: 80px !important;
+  }
+  
+  /* Row margins */
+  .row {
+    margin-left: -10px !important;
+    margin-right: -10px !important;
+  }
+  
+  .col, [class*="col-"] {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
+  /* Her section için içerik düzenlemesi */
+  .section .container {
+    max-width: 100% !important;
+    padding: 0 15px !important;
+  }
+  
+  /* ScrollOverflow'u kaldırıp tam görünüm sağla */
+  .fp-scrollable, .fp-scroller {
+    height: auto !important;
+  }
+  
+  #fp-nav {
+    display: none !important;
+  }
+  
+  /* Bölüm başlıklarını küçült ve margin ekle - tekrar ekle */
+  .section-title {
+    height: auto !important;
+    margin-bottom: 5px !important;
+    margin-top: 5px !important;
+  }
+  
+  /* Section title içindeki h3'ün margin'ını ayarla - tekrar ekle */
+  .section-title h3 {
+    margin-top: 20px !important;
+    font-size: 20px !important;
+  }
+  
+  /* Section title'daki çizgiyi küçült - tekrar ekle */
+  .section-title h3::after {
+    width: 40px !important;
+    height: 2px !important;
+    margin: 8px auto 0 !important;
+  }
+  
+  /* Neler yapabilirim sayfası için güncellemeler */
+  .services-section .card-text {
+    font-size: 9px !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Ben Kimim sayfasında saydamlık artırma */
+  .about-section .card {
+    background-color: rgba(33, 37, 41, 0.3) !important;
+  }
+  
+  /* Mobilde sayfaların tam ortada olması için */
+  .about-section .container,
+  .services-section .container,
+  .portfolio-section .container,
+  .certificates-section .container,
+  .contact-section .container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  /* Portfolyo sayfası için ek düzenlemeler */
+  .portfolio-section .row > div {
+    padding: 0 5px !important;
+  }
+  
+  .portfolio-section .card-title {
+    font-size: 11px !important;
+  }
+  
+  .portfolio-section .card-text {
+    font-size: 9px !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Sertifikalar için ek düzenlemeler */
+  .certificates-section .card-title {
+    font-size: 11px !important;
+  }
+  
+  /* İletişim sayfası için ek düzenlemeler */
+  .contact-section .row > div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Üst menü yerleşimi mobilde */
+  .mobile-toggle {
+    top: 10px !important;
+    right: 10px !important;
+    padding: 5px 8px !important;
+    z-index: 9999 !important;
+  }
+  
+  /* Ben Kimim sayfasındaki yazı fontlarının boyutlarını artırma */
+  .about-section h2.mb-4 {
+    font-size: 14px !important;
+    margin-top: 5px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .about-section p.lead {
+    font-size: 13px !important;
+    margin-bottom: 8px !important;
+    line-height: 1.3 !important;
+  }
+  
+  .about-section p.mb-5 {
+    font-size: 11px !important;
+    margin-bottom: 12px !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Kartlar arası mesafeyi artır */
+  .about-section .row {
+    margin-top: 10px !important;
+    gap: 20px !important;
+  }
+  
+  /* Yeteneklerim kartı ve yazı boyutlarını düzenle */
+  .about-section .col-lg-5 {
+    margin-bottom: 15px !important;
+    width: 95% !important;
+  }
+  
+  /* Yetenekler yazı boyutlarını artır */
+  .about-section .d-flex.justify-content-between span {
+    font-size: 14px !important;
+  }
+  
+  /* Kişisel Bilgiler kartını düzenle */
+  .about-section .col-lg-6 {
+    margin-top: 15px !important;
+    width: 95% !important;
+  }
+  
+  /* Kişisel bilgiler yazı fontlarını büyült */
+  .about-section li {
+    font-size: 14px !important;
+    margin-bottom: 8px !important;
+    line-height: 1.4 !important;
+  }
+  
+  .about-section .col-lg-6 strong.text-info {
+    font-size: 14px !important;
+  }
+  
+  .about-section .col-lg-6 .mb-3 {
+    margin-bottom: 10px !important;
+  }
+  
+  /* Kart padding ve margin düzenlemeleri */
+  .about-section .card {
+    padding: 12px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .about-section .card-body {
+    padding: 10px !important;
+  }
+  
+  /* Daha fazla alan için sayfa alt boşluğunu artır */
+  .about-section .page-container {
+    padding-bottom: 180px !important;
+  }
+  
+  /* Kişisel Bilgiler kartı içindeki yazıları düzenle */
+  .about-section .col-lg-6 li {
+    font-size: 12px !important;
+    margin-bottom: 4px !important;
+    line-height: 1.4 !important;
+  }
+  
+  .about-section .col-lg-6 strong.text-info {
+    font-size: 12px !important;
+  }
+  
+  .about-section .col-lg-6 .card-body {
+    padding: 10px !important;
+  }
+  
+  .about-section .col-lg-6 .mb-3 {
+    margin-bottom: 8px !important;
+  }
+  
+  /* Genel yazı fontlarını düzenle */
+  .about-section h2.mb-4 {
+    font-size: 15px !important;
+    margin-top: 5px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .about-section p.lead {
+    font-size: 13px !important;
+    margin-bottom: 8px !important;
+    line-height: 1.3 !important;
+  }
+  
+  .about-section p.mb-5 {
+    font-size: 11px !important;
+    margin-bottom: 15px !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Yetenekler yazı boyutlarını ayarla */
+  .about-section .d-flex.justify-content-between span {
+    font-size: 12px !important;
+  }
+  
+  /* Başlıkları düzenle */
+  .about-section h3 {
+    font-size: 20px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  /* Ben Kimim sayfasındaki kartları birleştirme */
+  .about-section .row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    margin-top: 10px !important;
+  }
+  
+  /* Tek bir birleşik kart oluştur */
+  .about-section .col-lg-5,
+  .about-section .col-lg-6 {
+    width: 95% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  
+  /* Yeteneklerim kartını düzenle */
+  .about-section .col-lg-5 .card {
+    border-radius: 8px 8px 0 0 !important;
+    margin-bottom: 0 !important;
+    border-bottom: none !important;
+    background-color: rgba(33, 37, 41, 0.4) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+  
+  /* Kişisel Bilgiler kartını birleştir */
+  .about-section .col-lg-6 .card {
+    border-radius: 0 0 8px 8px !important;
+    margin-top: 0 !important;
+    background-color: rgba(33, 37, 41, 0.4) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+  
+  /* Kart içi boşlukları düzenle */
+  .about-section .card {
+    padding: 8px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .about-section .card-body {
+    padding: 8px !important;
+  }
+  
+  /* Yazı boyutlarını düzenle */
+  .about-section .d-flex.justify-content-between span {
+    font-size: 11px !important;
+  }
+  
+  .about-section .progress {
+    height: 5px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .about-section .col-lg-6 li {
+    font-size: 11px !important;
+    margin-bottom: 3px !important;
+    line-height: 1.3 !important;
+  }
+  
+  .about-section .col-lg-6 strong.text-info {
+    font-size: 11px !important;
+  }
+  
+  .about-section h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Sayfada daha fazla alan sağla */
+  .about-section .page-container {
+    padding-bottom: 100px !important;
+  }
+}
+
+/* fullPage.js atıf yazısını gizle */
+.fp-watermark {
+  display: none !important;
+}
+
+/* Üretici atıf yazısını gizle - farklı sürümlerde farklı sınıf adları kullanabilir */
+.credits, .fp-credits, .fp-powered, .fp-enabled .credits {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* fullpage kredilerini gizle */
+#fp-nav ~ div:last-child {
+  display: none !important;
+}
+
+/* Tablet cihazlar için düzenlemeler */
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Tablet boyutunda arka plan yazılarının boyutunu ayarla */
+  .big-background-text {
+    font-size: 60px !important;
+    word-break: keep-all;
+    white-space: nowrap;
+  }
+  
+  /* Tablet boyutunda sayfa içeriklerini düzenle */
+  .section .page-container {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    min-height: 100%;
+    overflow-y: auto !important;
+  }
+  
+  /* Section title içindeki h3'ün margin'ını ayarla */
+  .section-title h3 {
+    margin-top: 30px;
+  }
+}
+
+/* Ana sayfa içeriği için özel stil */
+.home-content {
+  position: relative;
+  z-index: 5;
+}
+
+/* Portfolyo sayfası özel düzenlemeleri */
+.portfolio-section .page-container {
+  padding-top: 50px !important;
+  padding-bottom: 120px !important;
+}
+
+.portfolio-section .card {
+  padding: 8px !important;
+  height: auto !important;
+  margin-bottom: 10px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.portfolio-section .icon-wrapper {
+  width: 35px !important;
+  height: 35px !important;
+  margin-right: 8px !important;
+}
+
+.portfolio-section .btn-group {
+  margin-bottom: 10px !important;
+}
+
+.portfolio-section .btn {
+  font-size: 0.75rem !important;
+  padding: 0.25rem 0.5rem !important;
+}
+
+/* İletişim sayfası düzeltmeleri */
+.contact-section .page-container {
+  padding-top: 50px !important;
+  padding-bottom: 120px !important;
+}
+
+.contact-section .card {
+  padding: 8px !important;
+}
+
+.contact-section .card-body {
+  padding: 0.5rem !important;
+}
+
+.contact-section h3 {
+  font-size: 1.2rem !important;
+  margin-bottom: 8px !important;
+}
+
+.contact-section .form-control {
+  padding: 0.25rem 0.5rem !important;
+  height: auto !important;
+}
+
+.contact-section textarea {
+  min-height: 60px !important;
+}
+
+.contact-section .btn {
+  font-size: 0.8rem !important;
+  padding: 0.25rem 0.75rem !important;
+}
+
+.contact-section .me-3 {
+  margin-right: 0.5rem !important;
+}
+
+.contact-section h5 {
+  font-size: 0.9rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.contact-section p {
+  font-size: 0.75rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.contact-section .mb-4 {
+  margin-bottom: 0.75rem !important;
+}
+
+.contact-section .mb-5 {
+  margin-bottom: 1rem !important;
+}
+
+.contact-section .row > div {
+  margin-bottom: 0.5rem !important;
+}
+
+/* fullPage.js ekstra düzenlemesi */
+.fp-viewing-iletisim .fp-tableCell {
+  height: auto !important;
+  padding-bottom: 100px !important;
+}
+
+.fp-viewing-portfolyo .fp-tableCell,
+.fp-viewing-sertifikalar .fp-tableCell {
+  height: auto !important;
+  padding-bottom: 100px !important;
+}
+
+/* Portfolio Card Hover Effect */
+.portfolio-card {
+  transition: all 0.4s ease;
+  border: none !important;
+  background: transparent !important;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.portfolio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-1), var(--color-4));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.portfolio-card:hover::before {
+  opacity: 0.15;
+}
+
+.portfolio-card .card-body {
+  position: relative;
+  z-index: 1;
+}
+
+/* Portfolyo kartları için yeni stil */
+.portfolio-image-container {
+  position: relative;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: auto;
+}
+
+.portfolio-overlay {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.85));
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  backdrop-filter: blur(3px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.portfolio-card img {
+  transition: all 0.5s ease;
+}
+
+.portfolio-overlay h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.3s ease 0.1s;
+}
+
+.portfolio-overlay p {
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.3s ease 0.2s;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.portfolio-overlay .btn {
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.3s ease 0.3s;
+}
+
+/* Mobil görünüm için düzenlemeler */
+@media (max-width: 767px) {
+  .portfolio-image-container {
+    height: 180px !important;
+  }
+  
+  .portfolio-image-container img {
+    height: 180px !important;
+  }
+  
+  .portfolio-overlay h4 {
+    font-size: 1rem;
+  }
+  
+  .portfolio-overlay p {
+    font-size: 0.8rem;
+  }
+  
+  .portfolio-overlay .btn {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+/* Scroll ayarlamaları - içerik sığmadığında kaydırma çubuğu göster */
+.section .fp-overflow {
+  overflow-y: auto !important;
+  height: auto !important;
+}
+
+.section .page-container {
+  min-height: 100%;
+  height: auto !important;
+  padding-bottom: 50px !important;
+  padding-top: 30px !important;
+}
+
+@media (max-width: 767px) {
+  .section .fp-overflow {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .section .page-container {
+    height: auto !important;
+    min-height: 100%;
+    padding-bottom: 100px !important;
+    padding-top: 20px !important;
+  }
+  
+  .about-section .page-container {
+    padding-bottom: 150px !important;
+  }
+}
+
+/* Touch specific enhancements */
+@media (hover: hover) and (pointer: fine) {
+  .portfolio-card:hover .portfolio-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .portfolio-card:hover {
+    transform: translateY(-10px) !important;
+  }
+  
+  .portfolio-card:hover img {
+    transform: scale(1.05);
+  }
+  
+  .portfolio-card:hover .portfolio-overlay h4,
+  .portfolio-card:hover .portfolio-overlay p,
+  .portfolio-card:hover .portfolio-overlay .btn {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Touch devices */
+@media (hover: none) or (pointer: coarse) {
+  .portfolio-card:active .portfolio-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .portfolio-card:active img {
+    transform: scale(1.05);
+  }
+  
+  .portfolio-card:focus .portfolio-overlay,
+  .portfolio-card:focus-within .portfolio-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .portfolio-card:focus .portfolio-overlay h4,
+  .portfolio-card:focus .portfolio-overlay p,
+  .portfolio-card:focus .portfolio-overlay .btn,
+  .portfolio-card:focus-within .portfolio-overlay h4,
+  .portfolio-card:focus-within .portfolio-overlay p,
+  .portfolio-card:focus-within .portfolio-overlay .btn,
+  .portfolio-card:active .portfolio-overlay h4,
+  .portfolio-card:active .portfolio-overlay p,
+  .portfolio-card:active .portfolio-overlay .btn {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Touched state for mobile */
+.portfolio-card.touched .portfolio-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-card.touched {
+  transform: translateY(-10px) !important;
+}
+
+.portfolio-card.touched img {
+  transform: scale(1.05);
+}
+
+.portfolio-card.touched .portfolio-overlay h4,
+.portfolio-card.touched .portfolio-overlay p,
+.portfolio-card.touched .portfolio-overlay .btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* iPhone XR için özel düzenlemeler */
+@media only screen 
+  and (device-width: 414px) 
+  and (device-height: 896px) 
+  and (-webkit-device-pixel-ratio: 2) {
+  
+  /* Bölümler arası geçişler için düzenleme */
+  .fp-section {
+    transition: background-color 0.3s ease-out !important;
+    background-color: var(--color-1) !important;
+    border: none !important;
+    outline: none !important;
+  }
+
+  .about-section, .services-section {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .about-section::after, 
+  .services-section::before {
+    content: none !important;
+  }
+
+  .about-section {
+    background: var(--gradient-2-3) !important;
+  }
+
+  .services-section {
+    background: var(--gradient-3-4) !important;
+  }
+
+  /* Siyah şerit sorununu çözmek için animasyonları iptal et */
+  .fp-section, .fp-slide, 
+  .fp-section.active, .fp-slide.active {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  /* Bölümler arasında kusursuz geçiş */
+  .smooth-transition .fp-section, 
+  .smooth-transition .fp-slide {
+    transition: none !important;
+    animation: none !important;
+    border: none !important;
+    outline: none !important;
+  }
+  
+  /* Sayfa geçişlerinde boşluk olmasını engelle */
+  .section {
+    margin-top: -1px !important;
+    margin-bottom: -1px !important;
+  }
+  
+  /* About section ve Services section arasındaki şeridi gizle */
+  .about-section .page-container {
+    padding-bottom: 0 !important;
+    padding-top: 10px !important;
+    border-bottom: 0 !important;
+  }
+  
+  .services-section .page-container {
+    padding-top: 10px !important;
+    border-top: 0 !important;
+  }
+  
+  /* FullPage.js webkit overflow kontrolünü düzelt */
+  .fp-overflow {
+    -webkit-overflow-scrolling: auto !important;
+    overflow: hidden !important;
+  }
+  
+  /* Sayfa geçişlerini optimize et */
+  .fp-viewing-hakkimda .services-section,
+  .fp-viewing-neler-yapabilirim .about-section {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+/* Smooth transition class for all mobile devices */
+.smooth-transition .fp-section {
+  transition: none !important;
+}
+
+/* Full-page transitions for mobile */
+@media (max-width: 767px) {
+  .fp-section, .fp-slide {
+    transition: none !important;
+  }
+  
+  /* Fix for black strip between sections */
+  .section {
+    border: none !important;
+    background-attachment: fixed !important;
+    box-shadow: none !important;
+  }
+  
+  /* Create continuous background between sections */
+  .about-section, 
+  .services-section {
+    position: relative !important;
+    margin-top: -1px !important;
+    margin-bottom: -1px !important;
+  }
+  
+  /* Remove any height constraints during scroll */
+  .fp-section.fp-table {
+    display: block !important;
+  }
+}
