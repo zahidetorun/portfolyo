@@ -3,8 +3,6 @@ import {
   FaTwitter, 
   FaGithub, 
   FaFacebook, 
-  FaBars,
-  FaTimes,
   FaHome, 
   FaUser, 
   FaCode, 
@@ -12,6 +10,7 @@ import {
   FaEnvelope,
   FaCertificate
 } from 'react-icons/fa';
+import HamburgerMenu from './HamburgerMenu';
 import { useSidebar } from '../context/SidebarContext';
 
 const Sidebar = ({ currentPath }) => {
@@ -52,18 +51,12 @@ const Sidebar = ({ currentPath }) => {
 
   return (
     <>
-      {/* Main Hamburger Menu - Always visible and fixed in mobile view only */}
-      <button 
-        className="mobile-toggle main-hamburger d-lg-none" 
-        onClick={toggleSidebar}
-        aria-label={isOpen ? 'Close menu' : 'Open menu'}
-      >
-        {isOpen ? (
-          <FaTimes className="hamburger-icon rotate-in" /> 
-        ) : (
-          <FaBars className="hamburger-icon scale-in" />
-        )}
-      </button>
+      {/* Main Hamburger Menu - Always visible and fixed */}
+      <HamburgerMenu 
+        isOpen={isOpen} 
+        toggleMenu={toggleSidebar} 
+        className="main-hamburger"
+      />
       
       {/* Sidebar Navigation with animation class */}
       <aside className={`sidebar ${isOpen ? 'open' : ''} d-lg-flex`}>

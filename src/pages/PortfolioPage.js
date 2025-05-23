@@ -25,6 +25,13 @@ const PortfolioPage = () => {
       description: 'Uygulamayı PyQt5 kullanarak oluşturdum. Veri tabanı olarak SQLite3 kullandım. Şehir seçerek araba fiyatları karşınıza geliyor. Sigorta seçeneklerine göre fiyatlar değişiyor. Kiralama geçmişinizi uygulama sonunda pdf şeklinde indirebilirsiniz.',
       image: '/image/araba.jpg',
       url: 'https://github.com/zahidetorun/Arac-kiralama-uygulamasi'
+    },
+    {
+      id: 4,
+      title: 'Portfolyo Web Sitesi',
+      description: 'Bu portfolyo sitesini React kullanarak tasarladım. Responsive tasarımı, modern görünümü ve fullpage.js ile sayfa geçiş animasyonları içeriyor. Tüm sertifikalarımın ve çalışmalarımın sergilendiği kişisel web sitesi.',
+      image: '/image/portfolyo.jpg',
+      url: 'https://github.com/zahidetorun/portfolyo'
     }
   ];
   

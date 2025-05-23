@@ -14,7 +14,7 @@ import CertificatesPage from './pages/CertificatesPage';
 import ContactPage from './pages/ContactPage';
 
 // Context
-import { SidebarProvider, useSidebar } from './context/SidebarContext';
+import { SidebarProvider } from './context/SidebarContext';
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState('/');
@@ -136,4 +136,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
